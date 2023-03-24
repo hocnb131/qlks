@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Province;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ProvinceController extends Controller
 {
     /**
@@ -12,7 +12,11 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('province')->orderBy('id','desc')->paginate(5);
+        if($key = request()->key){
+        $data = DB::table('province')->orderBy('id','desc')->where('name','like','%'.$key.'%')->paginate(10);
+        }
+        return view('admin.province.index',compact('data'));
     }
 
     /**
@@ -20,7 +24,8 @@ class ProvinceController extends Controller
      */
     public function create()
     {
-        //
+        $data = DB::table('province')->orderBy('name','asc')->select('id','name')->get();
+        return view('admin.province.create',['data'=>$data]);
     }
 
     /**
@@ -28,7 +33,30 @@ class ProvinceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->has('file_upload')){
+            $file = $request->file_upload;
+            // dd($file);
+            $ext = $request->file_upload->extension();
+            // dd($ext);
+            // $file_name = $file->getClientoriginalName();
+            $file_name = time().'-'.'harmoney.'.$ext;
+            // dd($file_name);
+            $file->move(public_path('uploads'),$file_name);
+        }else{
+            $file_name = $request->thumbnail;
+        }
+        
+        $request->merge(['thumbnail'=> $file_name]);
+        $province = new Province;
+
+        $province->name = $request->name;
+        $province->status = $request->status;
+        $province->thumbnail = $request->thumbnail;
+        $province->thumbnailDescription = $request->thumbnailDescription;
+        $province->description = $request->description;
+        $province->save();
+        return redirect()->route('province.index')
+        ->with('success','Tạo thành công');
     }
 
     /**
@@ -44,7 +72,12 @@ class ProvinceController extends Controller
      */
     public function edit(Province $province)
     {
-        //
+        // $province = DB::table('province')->orderBy('name','asc')->select('id','name')->get();
+            // $province = DB::table('province')->get();
+            // return view('admin.province.edit',['data'=>$province]);
+            $data = DB::table('province')->orderBy('name','asc')->select('id','name')->get();
+            return view('admin.province.edit',compact('province','data'));
+            // dd($province);
     }
 
     /**
@@ -52,7 +85,25 @@ class ProvinceController extends Controller
      */
     public function update(Request $request, Province $province)
     {
-        //
+        if($request->has('file_upload')){
+            $file = $request->file_upload;
+            // dd($file);
+            $ext = $request->file_upload->extension();
+            // dd($ext);
+            // $file_name = $file->getClientoriginalName();
+            $file_name = time().'-'.'province.'.$ext;
+            // dd($file_name);
+            $file->move(public_path('uploads'),$file_name);
+            
+        }else{
+            $file_name = $request->thumbnail;
+        }
+        // dd($request);
+        $request->merge(['thumbnail'=> $file_name]);
+        // dd($request);
+        $province->update($request->all());
+        return redirect()->route('province.index')
+        ->with('success','Cập nhật thành công');
     }
 
     /**
@@ -60,6 +111,8 @@ class ProvinceController extends Controller
      */
     public function destroy(Province $province)
     {
-        //
+        $province->delete();
+        return redirect()->back()
+->with('success','Đã xóa');
     }
 }

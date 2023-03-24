@@ -12,7 +12,27 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('room', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('name_room');
+            $table->integer('adults');
+            $table->integer('children')->default('0');
+            $table->string('description')->nullable();
+            $table->date('calendar');
+            $table->string('thumbnail')->nullable();
+            $table->longText('thumbnailDescription')->nullable();
+            $table->bigInteger('price');
+            $table->string('bedType');
+            $table->integer('area')->nullable();
+            $table->integer('nameEn')->nullable();
+            $table->integer('status');
+            $table->string('roomType');
+            $table->string('amount');
+            $table->unsignedBigInteger('branch_id');
+            // $table->foreignId('branch_id')
+            // ->constrained('branch')
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade')
+            // ->restrictOnDelete();
             $table->timestamps();
         });
     }

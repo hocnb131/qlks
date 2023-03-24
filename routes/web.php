@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\BranchControler;
+use App\Http\Controllers\RoomController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +21,13 @@ Route::get('/', function () {
 });
 Route::prefix('admin')->group(function(){
     // Route::get('/',[HomeController::class,'index'])->name('home');
-    Route::get('/',[AdminController::class,'index'])->name('home')->middleware('checklogin::class');
+    // Route::get('/',[AdminController::class,'index'])->name('home')->middleware('checklogin::class');
     // Route::get('province',  'province')->name('province');
     // Route::get('role',[UserController::class,'role'])->name('user.role');
     // Route::get('create-role',[UserController::class,'create_role'])->name('create-role');
     // Route::get('permission',[UserController::class,'permission'])->name('user.permission');
     // Route::get('create-permission',[UserController::class,'create_permission'])->name('create-permission');
-    Route::get('/phanquyen',[UserController::class,'phanquyen'])->name('phanquyen');
+    // Route::get('/phanquyen',[UserController::class,'phanquyen'])->name('phanquyen');
     // Route::resource('role',[UserController::class]);
     Route::resources([
         'province'      =>   ProvinceController::class,
@@ -42,3 +45,7 @@ Route::prefix('admin')->group(function(){
         
     ]);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
