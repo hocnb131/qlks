@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('room', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name_room');
+            $table->string('name');
             $table->integer('adults');
             $table->integer('children')->default('0');
             $table->string('description')->nullable();

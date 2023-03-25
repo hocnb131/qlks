@@ -6,7 +6,7 @@
     
     <div class="col-auto">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search By Name..." name="key">
+            <input type="text" class="form-control" placeholder="Search By Name..." value="{{$key}}" name="key">
             <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
           </div>
     </div>
@@ -26,10 +26,12 @@
             <th>Thumbnail</th>
             {{-- <th>ThumbnailDescription</th> --}}
             {{-- <th>Description</th> --}}
-            <th>Action</th>
+
             {{-- <th>Province_ID</th> --}}
             <th>Created_At</th>
             <th>Updated_At</th>
+            <th>Deleted_At</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -58,7 +60,9 @@
 
                 {{-- <td>{{$d->thumbnailDescription}}</td> --}}
                 {{-- <td>{{$d->description}}</td> --}}
-
+                <td>{{\Carbon\Carbon::parse($d->created_at)->Format('d-m-Y')}}</td>
+                <td>{{\Carbon\Carbon::parse($d->updated_at)->Format('d-m-Y')}}</td>
+                <td>{{\Carbon\Carbon::parse($d->deleted_at)->Format('d-m-Y')}}</td>
                 <td>
 
                     <!-- <form action="{{ route('province.destroy',$d->id) }}" method="POST" id="form-delete">
@@ -74,7 +78,9 @@
                     </button>
                 </form> -->
 
-                    
+                {{-- <a href="{{ route('province.restore',$d->id) }}" class="btn btn-sm btn-success">
+                    <i class="fas fa-edit"></i>
+                </a> --}}
                     <a href="{{ route('province.edit',$d->id) }}" class="btn btn-sm btn-success">
                         <i class="fas fa-edit"></i>
                     </a>
@@ -87,23 +93,10 @@
                     
                 </td>
                 {{-- <td>{{$d->province_id}}</td> --}}
-                <td>{{\Carbon\Carbon::parse($d->created_at)->Format('d-m-Y')}}</td>
-                <td>{{\Carbon\Carbon::parse($d->created_at)->Format('d-m-Y')}}</td>
+               
             </tr>
             @endforeach
-            {{-- <tr>
-                <th colspan="1">
-                    <button type="submit" id="data_checkall" name="data_checkall" class="btn btn-sm btn-success btnselectall">
-                        <i class="fas fa-check"></i> SELECT ALL
-                    </button>
-                </th>
-                <th>
-                    <button id="form-deleteall" href="{{route('province.destroy',$d->id)}}"
-                        class="btn btn-sm btn-danger btndeleteall">
-                        <i class="fas fa-trash"></i> DELETE ALL
-                    </button>
-                </th>
-            </tr> --}}
+            
         </form>
     </tbody>
 </table>
@@ -113,8 +106,8 @@
 <form action="" method="GET" id="form-add">
     @csrf 
 </form>
-<form action="" method="POST" id="form-deleteall">
-    @csrf @method('DELETE')
+<form action="" method="GET" id="form-restore">
+    @csrf
 </form>
 <hr>
 <div class="">
@@ -130,6 +123,15 @@ $('.btndelete').click(function(ev) {
         $('form#form-delete').submit();
     }
 })
+$('.btnrestore').click(function(ev) {
+    ev.preventDefault();
+    var _href = $(this).attr('href');
+    alert(_href);
+    $('form#form-restore').attr('action', _href);
+    if (confirm('Bạn có chắc chắn muốn phục hồi nó không?')) {
+        $('form#form-restore').submit();
+    }
+})
 // 
 $('.btnAdd').click(function(ev) {
     ev.preventDefault();
@@ -139,17 +141,17 @@ $('.btnAdd').click(function(ev) {
     $('form#form-add').submit();
 })
 // 
-$('.btnselectall').click(function(ev) {
-    ev.preventDefault();
-    var _name = $('form-check-input').attr('name');
-    $('.btnselectall').submit();
-    alert(_name);
-    console.log(_name);
-    // $('form#form-delete').attr('action', _name);
-    // if (confirm('Bạn có chắc chắn muốn xóa nó không?')) {
-    //     $('form#form-delete').submit();
-    // }
-})
+// $('.btnselectall').click(function(ev) {
+//     ev.preventDefault();
+//     var _name = $('form-check-input').attr('name');
+//     $('.btnselectall').submit();
+//     alert(_name);
+//     console.log(_name);
+//     // $('form#form-delete').attr('action', _name);
+//     // if (confirm('Bạn có chắc chắn muốn xóa nó không?')) {
+//     //     $('form#form-delete').submit();
+//     // }
+// })
 </script>
 
 @stop();

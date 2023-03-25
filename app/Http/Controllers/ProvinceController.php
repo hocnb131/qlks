@@ -13,10 +13,11 @@ class ProvinceController extends Controller
     public function index()
     {
         $data = DB::table('province')->orderBy('id','desc')->paginate(5);
+        $key=request()->key;
         if($key = request()->key){
         $data = DB::table('province')->orderBy('id','desc')->where('name','like','%'.$key.'%')->paginate(10);
         }
-        return view('admin.province.index',compact('data'));
+        return view('admin.province.index',['data'=>$data,'key'=>$key]);
     }
 
     /**
@@ -35,25 +36,19 @@ class ProvinceController extends Controller
     {
         if($request->has('file_upload')){
             $file = $request->file_upload;
-            // dd($file);
             $ext = $request->file_upload->extension();
-            // dd($ext);
-            // $file_name = $file->getClientoriginalName();
             $file_name = time().'-'.'harmoney.'.$ext;
-            // dd($file_name);
             $file->move(public_path('uploads'),$file_name);
         }else{
             $file_name = $request->thumbnail;
         }
-        
         $request->merge(['thumbnail'=> $file_name]);
         $province = new Province;
-
         $province->name = $request->name;
         $province->status = $request->status;
         $province->thumbnail = $request->thumbnail;
-        $province->thumbnailDescription = $request->thumbnailDescription;
-        $province->description = $request->description;
+        // $province->thumbnailDescription = $request->thumbnailDescription;
+        // $province->description = $request->description;
         $province->save();
         return redirect()->route('province.index')
         ->with('success','Tạo thành công');
@@ -72,12 +67,23 @@ class ProvinceController extends Controller
      */
     public function edit(Province $province)
     {
-        // $province = DB::table('province')->orderBy('name','asc')->select('id','name')->get();
-            // $province = DB::table('province')->get();
-            // return view('admin.province.edit',['data'=>$province]);
-            $data = DB::table('province')->orderBy('name','asc')->select('id','name')->get();
-            return view('admin.province.edit',compact('province','data'));
+            // $data = DB::table('province')->get();
+            // $data->except([
+            //     'thumbnailDescription',
+            //     'description',
+            //     'created_at'
+            // ]);
+            // dd($data);
+            // $data = collect([
+            //     // $province->id,
+            //     $province->name,
+            //     $province->status,
+            //     $province->thumbnail,
+            //     $province->updated_at
+            // ]);
             // dd($province);
+            return view('admin.province.edit',['province'=>$province]);
+            
     }
 
     /**
@@ -85,23 +91,19 @@ class ProvinceController extends Controller
      */
     public function update(Request $request, Province $province)
     {
+        // dd($province->thumbnail);
         if($request->has('file_upload')){
             $file = $request->file_upload;
-            // dd($file);
             $ext = $request->file_upload->extension();
-            // dd($ext);
-            // $file_name = $file->getClientoriginalName();
             $file_name = time().'-'.'province.'.$ext;
-            // dd($file_name);
             $file->move(public_path('uploads'),$file_name);
-            
         }else{
-            $file_name = $request->thumbnail;
+            $file_name = $province->thumbnail;
         }
-        // dd($request);
         $request->merge(['thumbnail'=> $file_name]);
-        // dd($request);
-        $province->update($request->all());
+        $data = $request->except(['_token','_method']);
+        $province->update($data);
+        
         return redirect()->route('province.index')
         ->with('success','Cập nhật thành công');
     }
@@ -114,5 +116,11 @@ class ProvinceController extends Controller
         $province->delete();
         return redirect()->back()
 ->with('success','Đã xóa');
+    }
+    public function restore(Request $request){
+        
+        $request->restore();
+        dd($request);
+        return redirect()->back();
     }
 }

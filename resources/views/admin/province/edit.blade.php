@@ -48,7 +48,7 @@
             </div> --}}
             <div class="form-group">
                 <label for="">thumbnail</label>
-                <input type="file" class="form-control"  name="file_upload" placeholder="Input thumbnail">
+                <input type="file" class="form-control"  name="file_upload" value="{{$province->thumbnail}}" placeholder="Input thumbnail">
                 @error('file_upload')
                 <small class="help-block">{{$message}}</small>
                 @enderror
