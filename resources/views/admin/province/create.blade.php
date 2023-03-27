@@ -21,9 +21,9 @@
             </div> -->
             {{-- <div class="form-group">
                 <label for="">Description</label>
-                
+
                 <textarea name="description" class="form-control" id="content" placeholder="Mô tả"></textarea>
-                
+
                 @error('description')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
@@ -32,14 +32,14 @@
         <div class="col-md-4">
         <!-- <div class="form-group">
                 <label for="">Province</label>
-                
+
                 <select name="province_id" class="form-control">
                     <option value="">---SELECT-ONE---</option>
                     @foreach($data as $d)
                     <option value="{{$d->id}}">{{$d->name}}</option>
                     @endforeach
                 </select>
-                
+
                 @error('province')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
@@ -58,7 +58,7 @@
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
             </div> --}}
-            
+
             <div class="form-gourp">
                 <label for="">Status</label>
 
@@ -82,8 +82,19 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Save Data</button>
+    <button type="submit" class="btn btn-primary btnadd">Save Data</button>
 </form>
 @stop();
+<script>
+    $('.btnadd').click(function(ev) {
+    ev.preventDefault();
+    var _href = $(this).attr('href');
+    alert(_href);
+    $('form#form-delete').attr('action', _href);
+    if (confirm('Bạn có chắc chắn muốn xóa nó không?')) {
+        $('form#form-delete').submit();
+    }
+})
+</script>
 
 

@@ -22,9 +22,8 @@ return new class extends Migration
             $table->longText('thumbnailDescription')->nullable();
             $table->bigInteger('price');
             $table->string('bedType');
-            $table->integer('area')->nullable();
-            $table->integer('nameEn')->nullable();
-            $table->integer('status');
+            $table->integer('area');
+            $table->integer('status')->default(1);
             $table->string('roomType');
             $table->string('amount');
             $table->unsignedBigInteger('branch_id');

@@ -16,20 +16,18 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('address');
-            $table->integer('phoneNumber');
+            $table->string('phoneNumber');
             $table->longText('description')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('thumbnailDescription');
-            $table->string('slug');
-            $table->integer('status');
-            $table->string('nameEn');
+            $table->integer('status')->default(1);
             $table->unsignedBigInteger('province_id');
             // $table->foreignId('province_id');
             // $table->foreignId('province_id')
             // ->constrained('province')
             // ->onUpdate('cascade')
             // ->onDelete('cascade')
-            // ->restrictOnDelete();  
+            // ->restrictOnDelete();
             $table->timestamps();
         });
     }

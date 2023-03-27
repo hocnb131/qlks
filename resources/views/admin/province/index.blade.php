@@ -3,11 +3,11 @@
 @section('main')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <form action="" class="row align-items-start">
-    
+
     <div class="col-auto">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Search By Name..." value="{{$key}}" name="key">
-            <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+            <button id="submit-key" class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
           </div>
     </div>
     <div class="col"></div>
@@ -84,19 +84,19 @@
                     <a href="{{ route('province.edit',$d->id) }}" class="btn btn-sm btn-success">
                         <i class="fas fa-edit"></i>
                     </a>
-                    
+
                     <a href="{{route('province.destroy',$d->id)}}" class="btn btn-sm btn-danger btndelete">
                         <i class="fas fa-trash"></i>
                     </a>
-                   
-                   
-                    
+
+
+
                 </td>
                 {{-- <td>{{$d->province_id}}</td> --}}
-               
+
             </tr>
             @endforeach
-            
+
         </form>
     </tbody>
 </table>
@@ -104,9 +104,6 @@
     @csrf @method('DELETE')
 </form>
 <form action="" method="GET" id="form-add">
-    @csrf 
-</form>
-<form action="" method="GET" id="form-restore">
     @csrf
 </form>
 <hr>
@@ -132,7 +129,7 @@ $('.btnrestore').click(function(ev) {
         $('form#form-restore').submit();
     }
 })
-// 
+//
 $('.btnAdd').click(function(ev) {
     ev.preventDefault();
     var _href = $(this).attr('href');
@@ -140,7 +137,7 @@ $('.btnAdd').click(function(ev) {
     $('form#form-add').attr('action', _href);
     $('form#form-add').submit();
 })
-// 
+//
 // $('.btnselectall').click(function(ev) {
 //     ev.preventDefault();
 //     var _name = $('form-check-input').attr('name');

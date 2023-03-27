@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ProvinceRequest;
 class ProvinceController extends Controller
 {
     /**
@@ -32,7 +33,7 @@ class ProvinceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProvinceRequest $request)
     {
         if($request->has('file_upload')){
             $file = $request->file_upload;
@@ -83,7 +84,7 @@ class ProvinceController extends Controller
             // ]);
             // dd($province);
             return view('admin.province.edit',['province'=>$province]);
-            
+
     }
 
     /**
@@ -103,7 +104,7 @@ class ProvinceController extends Controller
         $request->merge(['thumbnail'=> $file_name]);
         $data = $request->except(['_token','_method']);
         $province->update($data);
-        
+
         return redirect()->route('province.index')
         ->with('success','Cập nhật thành công');
     }
@@ -118,7 +119,7 @@ class ProvinceController extends Controller
 ->with('success','Đã xóa');
     }
     public function restore(Request $request){
-        
+
         $request->restore();
         dd($request);
         return redirect()->back();
