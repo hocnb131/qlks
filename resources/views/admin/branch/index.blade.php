@@ -39,7 +39,7 @@
             <th>Email</th>
             <th>Address</th>
             <th>PhoneNumber</th>
-            {{-- <th>Description</th> --}}
+            <th>Description</th>
             <th>Thumbnail</th>
             {{-- <th>ThumbnailDescription</th> --}}
             <!-- <th>Province</th> -->
@@ -56,7 +56,10 @@
             <td style="max-width: 4cm;">{{$d->email}}</td>
             <td style="max-width: 3cm;">{{$d->address}}</td>
             <td>{{$d->phoneNumber}}</td>
-            {{-- <td>{{$d->description}}</td> --}}
+
+            <td> {!! nl2br(e($d->description)) !!} </td>
+            {{-- <td> {{nl2br(e($d->description))}}</td> --}}
+
             <td><img src="{{url('/uploads')}}/{{$d->thumbnail}}" width="50" height="50" alt=""></td>
             {{-- <td>{{$d->thumbnailDescription}}</td> --}}
 

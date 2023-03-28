@@ -27,6 +27,8 @@ $menu=config('menu')
   <link rel="stylesheet" href="{{url('adlte')}}/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="{{url('adlte')}}/plugins/summernote/summernote-bs4.min.css">
+  @stack('scripts')
+  @stack('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
