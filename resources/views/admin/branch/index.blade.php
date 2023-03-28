@@ -2,10 +2,10 @@
 @section('title', 'Branch List')
 @section('main')
 <form action="" class="row align-items-start">
-    
+
     <div class="col-auto">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search By Name..." name="key">
+            <input type="text" class="form-control" placeholder="Search By Name..." value="{{$key}}" name="key">
             <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
           </div>
     </div>
@@ -43,12 +43,9 @@
             <th>Thumbnail</th>
             {{-- <th>ThumbnailDescription</th> --}}
             <!-- <th>Province</th> -->
-            <th>Slug</th>
-            <th>Province</th>
+            {{-- <th>Province_id</th> --}}
             <th>Status</th>
-            <th>NameEn</th>
             <th>Action</th>
-
         </tr>
     </thead>
     <tbody>
@@ -56,17 +53,16 @@
         <tr>
             <td>{{$d->id}}</td>
             <td style="max-width: 3cm;">{{$d->name}}</td>
-            <td style="max-width: 3cm;">{{$d->email}}</td>
+            <td style="max-width: 4cm;">{{$d->email}}</td>
             <td style="max-width: 3cm;">{{$d->address}}</td>
             <td>{{$d->phoneNumber}}</td>
             {{-- <td>{{$d->description}}</td> --}}
             <td><img src="{{url('/uploads')}}/{{$d->thumbnail}}" width="50" height="50" alt=""></td>
             {{-- <td>{{$d->thumbnailDescription}}</td> --}}
-            
-            <td>{{$d->slug}}</td>
-            
-            <td>{{$d->province_id}}</td>
-           
+
+            {{-- <td>{{$d->slug}}</td> --}}
+            {{-- <td>{{$d->province_id}}</td> --}}
+
             <td>
                 @if($d->status == 0)
                 <span class="badge badge-danger">Private</span>
@@ -74,18 +70,18 @@
                 <span class="badge badge-success">Publish</span>
                 @endif
             </td>
-            <td>
+            {{-- <td>
                 @if($d->nameEn == 0)
                 <span class="badge badge-warning">Vi</span>
                 @else
                 <span class="badge badge-secondary">En</span>
                 @endif
-            </td>
+            </td> --}}
             <td>
-                
+
                 <form action="{{ route('branch.destroy',$d->id) }}" method="POST" id="form-delete">
                     @csrf
-                    
+
                     <a href="{{ route('branch.edit',$d->id) }}" class="btn btn-sm btn-success">
                         <i class="fas fa-edit"></i>
                     </a>
@@ -94,8 +90,8 @@
                         <i class="fas fa-trash"></i>
                     </button>
                 </form>
-                
-                
+
+
 
 
             </td>
@@ -104,6 +100,12 @@
         @endforeach
     </tbody>
 </table>
+<form action="" method="POST" id="form-delete">
+    @csrf @method('DELETE')
+</form>
+<form action="" method="GET" id="form-add">
+    @csrf
+</form>
 <hr>
 <div class="">
     {{$data->appends(request()->all())->links()}}

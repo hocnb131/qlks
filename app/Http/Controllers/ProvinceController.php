@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Branch;
 use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,6 +18,7 @@ class ProvinceController extends Controller
         if($key = request()->key){
         $data = DB::table('province')->orderBy('id','desc')->where('name','like','%'.$key.'%')->paginate(10);
         }
+
         return view('admin.province.index',['data'=>$data,'key'=>$key]);
     }
 

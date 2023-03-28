@@ -5,7 +5,7 @@ use App\Http\Controllers\ProvinceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdiminController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\BranchControler;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -29,11 +29,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->group(function(){
     Route::get('/',[AdminController::class,'dashboard'])->name('dashboard');
     Route::resources([
-        'user'          =>   UserController::class,
         'province'      =>   ProvinceController::class,
         'branch'        =>   BranchController::class,
         'room'          =>   RoomController::class,
         'service'       =>   ServiceController::class,
+        'user'          =>   UserController::class,
     ]);
 });
 

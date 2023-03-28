@@ -26,7 +26,6 @@
             <th>Thumbnail</th>
             {{-- <th>ThumbnailDescription</th> --}}
             {{-- <th>Description</th> --}}
-
             {{-- <th>Province_ID</th> --}}
             <th>Created_At</th>
             <th>Updated_At</th>
@@ -38,12 +37,6 @@
         <form action="" method="post">
             @foreach($data as $d)
             <tr>
-                {{-- <td>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="province[]" value="{{$d->id}}"
-                            id="form-delete">
-                    </div>
-                </td> --}}
                 <td>{{$d->id}}</td>
                 <td>{{$d->name}}</td>
                 <td>
@@ -100,16 +93,16 @@
         </form>
     </tbody>
 </table>
+<hr>
+<div class="">
+    {{$data->appends(request()->all())->links()}}
+</div>
 <form action="" method="POST" id="form-delete">
     @csrf @method('DELETE')
 </form>
 <form action="" method="GET" id="form-add">
     @csrf
 </form>
-<hr>
-<div class="">
-    {{$data->appends(request()->all())->links()}}
-</div>
 <script>
 $('.btndelete').click(function(ev) {
     ev.preventDefault();
@@ -120,47 +113,5 @@ $('.btndelete').click(function(ev) {
         $('form#form-delete').submit();
     }
 })
-$('.btnrestore').click(function(ev) {
-    ev.preventDefault();
-    var _href = $(this).attr('href');
-    alert(_href);
-    $('form#form-restore').attr('action', _href);
-    if (confirm('Bạn có chắc chắn muốn phục hồi nó không?')) {
-        $('form#form-restore').submit();
-    }
-})
-//
-$('.btnAdd').click(function(ev) {
-    ev.preventDefault();
-    var _href = $(this).attr('href');
-    // alert(_href);
-    $('form#form-add').attr('action', _href);
-    $('form#form-add').submit();
-})
-//
-// $('.btnselectall').click(function(ev) {
-//     ev.preventDefault();
-//     var _name = $('form-check-input').attr('name');
-//     $('.btnselectall').submit();
-//     alert(_name);
-//     console.log(_name);
-//     // $('form#form-delete').attr('action', _name);
-//     // if (confirm('Bạn có chắc chắn muốn xóa nó không?')) {
-//     //     $('form#form-delete').submit();
-//     // }
-// })
 </script>
-
 @stop();
-
-<!-- <script>
-    $('.btndelete').click(function (ev) {
-        ev.preventDefault();
-        var _href = $(this).attr('href');
-        // alert(_href);
-        $('form#form-delete').attr('action',_href);
-        if(confirm('Bạn có chắc chắn muốn xóa nó không?')){
-            $('form#form-delete').submit();
-        }
-  })
-</script> -->

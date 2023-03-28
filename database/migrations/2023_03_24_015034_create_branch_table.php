@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('phoneNumber');
             $table->longText('description')->nullable();
             $table->string('thumbnail')->nullable();
-            $table->string('thumbnailDescription');
+            $table->string('thumbnailDescription')->nullable();
             $table->integer('status')->default(1);
-            $table->unsignedBigInteger('province_id');
+            $table->unsignedBigInteger('province_id')->nullable();
             // $table->foreignId('province_id');
             // $table->foreignId('province_id')
             // ->constrained('province')

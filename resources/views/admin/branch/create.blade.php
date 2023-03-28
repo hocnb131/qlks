@@ -44,16 +44,16 @@
         <div class="col-md-6">
         <div class="form-group">
                 <label for="">Province</label>
-                
-                <select name="province_id" class="form-control" required>
-                    <option value="">---SELECT-ONE---</option>
-                    @foreach($datab as $d)
-                    <option value="{{$d->id}}">{{$d->name}}</option>
-                 
+
+                <select name="province_id" class="form-control">
+                    <option value="">---SELECT-PROVINCE---</option>
+                    @foreach($province as $p)
+                    <option value="{{$p->id}}">{{$p->name}}</option>
+
                     @endforeach
-                    
+
                 </select>
-                
+
                 @error('province_id')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
@@ -72,13 +72,13 @@
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="">Slug</label>
                 <input type="text" class="form-control" name="slug" placeholder="Input address">
                 @error('slug')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
-            </div>
+            </div> --}}
             <div class="form-gourp">
                 <label for="">Status</label>
                 <div class="radio">
@@ -92,7 +92,7 @@
                     </label>
                 </div>
             </div>
-            <div class="form-gourp">
+            {{-- <div class="form-gourp">
                 <label for="">NameEn</label>
                 <div class="radio">
                     <label>
@@ -104,7 +104,7 @@
                         Vi
                     </label>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>
