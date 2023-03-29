@@ -6,7 +6,7 @@
     
     <div class="col-auto">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search By Name..." name="key">
+            <input type="text" class="form-control" placeholder="Search By Name..." value="{{$key}}" name="key">
             <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
           </div>
     </div>
@@ -25,24 +25,16 @@
                 <th>Children</th>
                 <th>Bed Type</th>
                 <th>Thumbnail</th>
-
                 <th>Price</th>
                 <th>Amount</th>
                 <th>Calendar</th>
-                <th>Description</th>
-             
-
+                {{-- <th>Description</th> --}}
                 {{-- <th>ThumbnailDescription</th> --}}
-                
-                
                 {{-- <th>Area</th> --}}
-
-                <th>Slug</th>
+                {{-- <th>Slug</th> --}}
                 {{-- <th>NameEN</th> --}}
                 <th>Status</th>
-                
                 <th>Action</th>
-
             </tr>
         </thead>
         <tbody>
@@ -57,18 +49,8 @@
                     {{-- <td>{{ $d->thumbnailDescription }}</td> --}}
                     <td>{{number_format($d->price)}}</td>
                     <td>{{ $d->amount }}</td>
-
                     <td>{{ $d->calendar }}</td>
-                    
-                    <td>{{ $d->description }}</td>
-                    
-                    
-                    
-                    
-                    {{-- <td>{{ $d->area }}</td> --}}
-                    <td>{{ $d->slug }}</td>
-                    {{-- <td>{{ $d->nameEn }}</td> --}}
-                    
+                    {{-- <td>{!! nl2br($d->description) !!}</td> --}}
                     <td>
                         @if ($d->status == 0)
                             <span class="badge badge-danger">Private</span>
@@ -77,10 +59,7 @@
                         @endif
                     </td>
                     <!-- <td>{{ $d->thumbnail }}</td> -->
-         
-
                     <td>
-
                         <form action="{{ route('room.destroy', $d->id) }}" method="POST" id="form-delete">
                             @csrf
 
@@ -93,52 +72,31 @@
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
-
-
-
                     </td>
-
-
                     <!-- <td><img src="{{ url('/uploads') }}/{{ $d->thumbnail }}" width="50" alt=""></td> -->
                 </tr>
             @endforeach
         </tbody>
     </table>
-    
-    <!-- <form action="" method="POST" id="form-delete">
-                    @csrf @method('DELETE')
-
-    </form> -->
     <hr>
     <div class="">
-        {{ $data->appends(request()->all())->links() }}
+        {{$data->appends(request()->all())->links()}}
     </div>
+    <form action="" method="POST" id="form-delete">
+        @csrf @method('DELETE')
+    </form>
     <form action="" method="GET" id="form-add">
-        @csrf 
+        @csrf
     </form>
     <script>
-        $('.btnAdd').click(function(ev) {
-    ev.preventDefault();
-    var _href = $(this).attr('href');
-    // alert(_href);
-    $('form#form-add').attr('action', _href);
-    $('form#form-add').submit();
-})
-    </script>
-@stop();
-
-{{-- @section('js')
-
-<script>
-    $('.btndelete').click(function (ev) {
+    $('.btndelete').click(function(ev) {
         ev.preventDefault();
         var _href = $(this).attr('href');
         // alert(_href);
-        $('form#form-delete').attr('action',_href);
-        if(confirm('Bạn có chắc chắn muốn xóa nó không?')){
+        $('form#form-delete').attr('action', _href);
+        if (confirm('Bạn có chắc chắn muốn xóa nó không?')) {
             $('form#form-delete').submit();
         }
-  })
-</script>
-
-@stop(); --}}
+    })
+    </script>
+    @stop();

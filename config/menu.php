@@ -39,21 +39,21 @@
             ]
         ],
         // Room
-        // [
-        //     'label' => 'Room',
-        //     'route' => 'room.index',
-        //     'icon' => 'fa-bed',
-        //     'item' => [
-        //         [
-        //         'label' => 'All Room', 
-        //         'route' => 'room.index', 
-        //         ],
-        //         [
-        //         'label' => 'Add Room', 
-        //         'route' => 'room.create', 
-        //         ],
-        //     ]
-        // ],
+        [
+            'label' => 'Room',
+            'route' => 'room.index',
+            'icon' => 'fa-bed',
+            'item' => [
+                [
+                'label' => 'All Room', 
+                'route' => 'room.index', 
+                ],
+                [
+                'label' => 'Add Room', 
+                'route' => 'room.create', 
+                ],
+            ]
+        ],
         // // Service
         // [
         //     'label' => 'Service',

@@ -5,6 +5,7 @@ use App\Models\Branch;
 use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\BranchRequest;
 class BranchController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class BranchController extends Controller
         $data = Branch::orderBy('id','desc')->paginate(5);
         $key=request()->key;
         if($key = request()->key){
-        $data = DB::table('branch')->orderBy('id','desc')->where('name','like','%'.$key.'%')->paginate(10);
+        $data = Branch::orderBy('id','desc')->where('name','like','%'.$key.'%')->paginate(10);
         }
         // $branchs = Province::find(2);
         // $province = Province::with('branchs')->get();
@@ -33,14 +34,14 @@ class BranchController extends Controller
     {
         // $province = Province::get();
         $province = Province::with('branchs')->get();
-        $data = DB::table('branch')->orderBy('name','asc')->select('id','name')->get();
+        $data = Branch::orderBy('name','asc')->select('id','name')->get();
         return view('admin.branch.create',['data'=>$data,'province'=>$province]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BranchRequest $request)
     {
         if($request->has('file_upload')){
             $file = $request->file_upload;
@@ -87,7 +88,7 @@ class BranchController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Branch $branch)
+    public function update(BranchRequest $request, Branch $branch)
     {
         if($request->has('file_upload')){
             $file = $request->file_upload;

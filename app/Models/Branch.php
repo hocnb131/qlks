@@ -5,9 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class Branch extends Model
 {
     use HasFactory;
+    // protected $guarded = [$table = 'branch',$fillable = [
+    //     'name',
+    //     'email',
+    //     'address',
+    //     'phoneNumber',
+    //     'description',
+    //     'thumbnail',
+    //     'thumbnailDescription',
+    //     'status',
+    //     'province_id'
+    //     ]];
     protected $table = 'branch';
     protected $fillable = [
     'name',
@@ -22,5 +34,8 @@ class Branch extends Model
     ];
     public function province(): BelongsTo{
         return $this->belongsTo(Province::class,'province_id');
+    }
+    public function rooms(): HasMany{
+        return $this->hasMany(Room::class);
     }
 }

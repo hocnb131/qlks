@@ -15,9 +15,9 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('status')->default(0);
-            $table->string('thumbnail',255)->nullable();
-            $table->string('thumbnailDescription',255)->nullable();
-            $table->string('description',255)->nullable();           
+            $table->longText('thumbnail')->nullable();
+            $table->longText('thumbnailDescription')->nullable();
+            $table->longText('description')->nullable();           
             $table->timestamps();
         });
     }

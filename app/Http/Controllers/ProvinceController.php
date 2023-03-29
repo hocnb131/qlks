@@ -6,6 +6,7 @@ use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ProvinceRequest;
+use App\Http\Requests\ProvinceUpdateRequest;
 class ProvinceController extends Controller
 {
     /**
@@ -91,7 +92,7 @@ class ProvinceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Province $province)
+    public function update(ProvinceUpdateRequest $request, Province $province)
     {
         // dd($province->thumbnail);
         if($request->has('file_upload')){
@@ -116,13 +117,13 @@ class ProvinceController extends Controller
     public function destroy(Province $province)
     {
         $province->delete();
+        // $province->truncate(); xóa tat ca + relation ship
         return redirect()->back()
 ->with('success','Đã xóa');
     }
     public function restore(Request $request){
-
         $request->restore();
-        dd($request);
+        // dd($request);
         return redirect()->back();
     }
 }

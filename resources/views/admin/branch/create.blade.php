@@ -7,35 +7,35 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Input name" required>
+                <input type="text" class="form-control" name="name" placeholder="Input name">
                 @error('name')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Input email" required>
+                <input type="email" class="form-control" name="email" placeholder="Input email">
                 @error('email')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="">Address</label>
-                <input type="text" class="form-control" name="address" placeholder="Input address" required>
+                <input type="text" class="form-control" name="address" placeholder="Input address">
                 @error('address')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="">PhoneNumber</label>
-                <input type="text" class="form-control" name="phoneNumber" placeholder="Input PhoneNumber" required>
+                <input type="text" class="form-control" name="phoneNumber" placeholder="Input PhoneNumber">
                 @error('phoneNumber')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
             </div>
             <div class="form-group">
                 <label for="">Description</label>
-                <textarea name="description" class="form-control" id="summernote"  placeholder="Input description" required></textarea>
+                <textarea name="description" class="form-control" id="summernote"  placeholder="Input description"></textarea>
                 @error('description')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
@@ -60,7 +60,7 @@
             </div>
             <div class="form-group">
                 <label for="">thumbnail</label>
-                <input type="file" class="form-control" name="file_upload" placeholder="Input thumbnail" required>
+                <input type="file" class="form-control" name="file_upload" placeholder="Input thumbnail">
                 @error('file_upload')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror
@@ -120,7 +120,7 @@
     $('#summernote').summernote({
         placeholder: 'Nhập content',
         tabsize: 2,
-        height: 150,
+        height: 90,
         focus: true ,
       });
 </script>

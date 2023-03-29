@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('address');
             $table->string('phoneNumber');
             $table->longText('description')->nullable();
-            $table->string('thumbnail')->nullable();
-            $table->string('thumbnailDescription')->nullable();
+            $table->longText('thumbnail')->nullable();
+            $table->longText('thumbnailDescription')->nullable();
             $table->integer('status')->default(1);
             $table->unsignedBigInteger('province_id')->nullable();
             // $table->foreignId('province_id');
