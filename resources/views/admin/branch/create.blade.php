@@ -35,8 +35,7 @@
             </div>
             <div class="form-group">
                 <label for="">Description</label>
-                {{-- <textarea name="description" class="form-control"  placeholder="Input description" required></textarea> --}}
-                <div id="summernote"></div>
+                <textarea name="description" class="form-control" id="summernote"  placeholder="Input description" required></textarea>
                 @error('description')
                 <small class="badge badge-danger">{{$message}}</small>
                 @enderror

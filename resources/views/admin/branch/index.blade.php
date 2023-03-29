@@ -59,13 +59,10 @@
 
             <td> {!! nl2br(e($d->description)) !!} </td>
             {{-- <td> {{nl2br(e($d->description))}}</td> --}}
-
             <td><img src="{{url('/uploads')}}/{{$d->thumbnail}}" width="50" height="50" alt=""></td>
             {{-- <td>{{$d->thumbnailDescription}}</td> --}}
-
             {{-- <td>{{$d->slug}}</td> --}}
             {{-- <td>{{$d->province_id}}</td> --}}
-
             <td>
                 @if($d->status == 0)
                 <span class="badge badge-danger">Private</span>
@@ -93,12 +90,7 @@
                         <i class="fas fa-trash"></i>
                     </button>
                 </form>
-
-
-
-
             </td>
-
         </tr>
         @endforeach
     </tbody>

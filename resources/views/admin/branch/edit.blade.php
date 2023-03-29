@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Description</label>
-                    <textarea name="description" class="form-control" id="summernote" placeholder="Input description" required></textarea>
+                    <textarea name="description" class="form-control" value="{!!nl2br(e($branch->description))!!}" id="summernote" placeholder="Nhập nội dung mô tả"></textarea>
                     @error('description')
                         <small class="badge badge-danger">{{ $message }}</small>
                     @enderror
@@ -52,8 +52,8 @@
 
                     <select name="province_id" class="form-control">
                         <option value="">---SELECT-ONE---</option>
-                        @foreach ($datab as $d)
-                            <option value="{{ $d->id }}">{{ $d->name }}</option>
+                        @foreach ($province as $p)
+                            <option value="{{ $p->id }}">{{ $p->name }}</option>
                         @endforeach
                     </select>
 
@@ -76,14 +76,14 @@
                         <small class="badge badge-danger">{{ $message }}</small>
                     @enderror
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="">Slug</label>
                     <input type="text" class="form-control" value="{{ $branch->slug }}" name="slug"
                         placeholder="Input address">
                     @error('slug')
                         <small class="badge badge-danger">{{ $message }}</small>
                     @enderror
-                </div>
+                </div> --}}
                 <div class="form-gourp">
                     <label for="">Status</label>
                     <div class="radio">

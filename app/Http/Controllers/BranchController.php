@@ -79,7 +79,9 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        return view('admin.branch.edit',['branch'=>$branch]);
+        $province = Province::with('branchs')->get();
+        return view('admin.branch.edit',['branch'=>$branch,'province'=>$province]);
+
     }
 
     /**
