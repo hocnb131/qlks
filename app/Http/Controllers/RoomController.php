@@ -26,9 +26,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        $branch = Branch::with('rooms')->get();
+        // $branch = Branch::with('rooms')->get();
         $data = Room::orderBy('name','asc')->select('id','name')->get();
-        return view('admin.room.create',['data'=>$data,'branch'=>$branch]);
+        return view('admin.room.create',['data'=>$data]);
     }
 
     /**
@@ -45,22 +45,16 @@ class RoomController extends Controller
             $file_name = $request->thumbnail;
         }
         $request->merge(['thumbnail'=> $file_name]);
-        $branch = new Room;
-        $branch->name = $request->name;
-        $branch->adults = $request->adults;
-        $branch->children = $request->children;
-        $branch->description = $request->description;
-        $branch->calendar = $request->calendar;
-        $branch->thumbnail = $request->thumbnail;
-        $branch->thumbnailDescription = $request->thumbnailDescription;
-        $branch->price = $request->price;
-        $branch->bedType = $request->bedType;
-        $branch->area = $request->area;
-        $branch->status = $request->status;
-        $branch->roomType = $request->roomType;
-        $branch->amount = $request->amount;
-        $branch->branch_id = $request->branch_id;
-        $branch->save();
+        $room = new Room;
+        $room->name = $request->name;
+        $room->price = $request->price;
+        $room->thumbnail = $request->thumbnail;
+        $room->size = $request->size;
+        $room->capacity = $request->capacity;
+        $room->bed = $request->bed;
+        $room->services = $request->services;
+        $room->status = $request->status;
+        $room->save();
         return redirect()->route('room.index')
         ->with('success','Tạo thành công');
     }
@@ -78,8 +72,8 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        $branch = Branch::with('branchs')->get();
-        return view('admin.room.edit',['room'=>$room,'branch'=>$branch]);
+        // $room = Branch::with('branchs')->get();
+        return view('admin.room.edit',['room'=>$room]);
     }
 
     /**

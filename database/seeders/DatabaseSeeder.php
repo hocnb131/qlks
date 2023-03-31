@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            ProvinceSeeder::class,
-            BranchSeeder::class,
+            // ProvinceSeeder::class,
+            // BranchSeeder::class,
             RoomSeeder::class,
             ServiceSeeder::class
         ]);

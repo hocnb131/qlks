@@ -21,19 +21,12 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Adults</th>
-                <th>Children</th>
-                <th>Bed Type</th>
                 <th>Thumbnail</th>
                 <th>Price</th>
-                <th>Amount</th>
-                <th>Calendar</th>
-                {{-- <th>Description</th> --}}
-                {{-- <th>ThumbnailDescription</th> --}}
-                {{-- <th>Area</th> --}}
-                {{-- <th>Slug</th> --}}
-                {{-- <th>NameEN</th> --}}
-                <th>Status</th>
+                <th>Size</th>
+                <th>Capacity</th>
+                <th>Bed Type</th>
+                <th>Services</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -42,15 +35,12 @@
                 <tr>
                     <td>{{ $d->id }}</td>
                     <td>{{ $d->name }}</td>
-                    <td>{{ $d->adults }}</td>
-                    <td>{{ $d->children }}</td>
-                    <td>{{ $d->bedType }}</td>
                     <td><img src="{{ url('/uploads') }}/{{ $d->thumbnail }}" width="50" alt=""></td>
-                    {{-- <td>{{ $d->thumbnailDescription }}</td> --}}
                     <td>{{number_format($d->price)}}</td>
-                    <td>{{ $d->amount }}</td>
-                    <td>{{ $d->calendar }}</td>
-                    {{-- <td>{!! nl2br($d->description) !!}</td> --}}
+                    <td>{{ $d->size }}</td>
+                    <td>{{ $d->capacity }}</td>
+                    <td>{{ $d->bed }}</td>
+                    <td>{!! nl2br($d->services) !!}</td>
                     <td>
                         @if ($d->status == 0)
                             <span class="badge badge-danger">Private</span>

@@ -7,37 +7,37 @@
             'icon'=> 'fa-home'
         ],
         // Province
-        [
-            'label' => 'Province',
-            'route' => 'province.index',
-            'icon' => 'fa-address-book',
-            'item' => [
-                [
-                'label' => 'All Province', 
-                'route' => 'province.index', 
-                ],
-                [
-                'label' => 'Add Province', 
-                'route' => 'province.create', 
-                ],
-            ]
-        ],
+        // [
+        //     'label' => 'Province',
+        //     'route' => 'province.index',
+        //     'icon' => 'fa-address-book',
+        //     'item' => [
+        //         [
+        //         'label' => 'All Province', 
+        //         'route' => 'province.index', 
+        //         ],
+        //         [
+        //         'label' => 'Add Province', 
+        //         'route' => 'province.create', 
+        //         ],
+        //     ]
+        // ],
         // Branch
-        [
-            'label' => 'Branch',
-            'route' => 'branch.index',
-            'icon' => 'fa-list-ol',
-            'item' => [
-                [
-                'label' => 'All Branch', 
-                'route' => 'branch.index', 
-                ],
-                [
-                'label' => 'Add Branch', 
-                'route' => 'branch.create', 
-                ],
-            ]
-        ],
+        // [
+        //     'label' => 'Branch',
+        //     'route' => 'branch.index',
+        //     'icon' => 'fa-list-ol',
+        //     'item' => [
+        //         [
+        //         'label' => 'All Branch', 
+        //         'route' => 'branch.index', 
+        //         ],
+        //         [
+        //         'label' => 'Add Branch', 
+        //         'route' => 'branch.create', 
+        //         ],
+        //     ]
+        // ],
         // Room
         [
             'label' => 'Room',

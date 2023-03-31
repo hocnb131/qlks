@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('province', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->integer('status')->default(0);
-            $table->longText('thumbnail')->nullable();
-            $table->longText('thumbnailDescription')->nullable();
-            $table->longText('description')->nullable();           
-            $table->timestamps();
-        });
+        // Schema::create('province', function (Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->string('name');
+        //     $table->integer('status')->default(0);
+        //     $table->longText('thumbnail')->nullable();
+        //     $table->longText('thumbnailDescription')->nullable();
+        //     $table->longText('description')->nullable();           
+        //     $table->timestamps();
+        // });
     }
 
     /**

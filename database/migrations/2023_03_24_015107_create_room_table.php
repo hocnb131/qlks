@@ -14,19 +14,20 @@ return new class extends Migration
         Schema::create('room', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('adults');
-            $table->integer('children');
-            $table->longText('description')->nullable();
-            $table->date('calendar');
+            $table->double('price');
             $table->longText('thumbnail')->nullable();
-            $table->longText('thumbnailDescription')->nullable();
-            $table->bigInteger('price');
-            $table->string('bedType');
-            $table->integer('area');
+            $table->string('size');
+            $table->string('capacity');
+            $table->string('bed');
+            $table->longText('services');
+            // $table->date('calendar');
+            // $table->longText('thumbnailDescription')->nullable();
+            // $table->string('bedType');
+            // $table->integer('area');
             $table->integer('status')->default(1)->comment('1: còn phòng, 0: hết phòng');
-            $table->string('roomType');
-            $table->string('amount');
-            $table->unsignedBigInteger('branch_id');
+            // $table->string('roomType');
+            // $table->string('amount');
+            // $table->unsignedBigInteger('branch_id');
             // $table->foreignId('branch_id')
             // ->constrained('branch')
             // ->onUpdate('cascade')
