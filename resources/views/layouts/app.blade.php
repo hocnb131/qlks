@@ -60,8 +60,17 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('admin-form').submit();">
+                                        {{ __('Admin') }}
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    <form id="admin-form" action="{{ route('dashboard') }}" method="GET" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
