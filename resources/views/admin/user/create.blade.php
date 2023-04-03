@@ -4,7 +4,7 @@
     <form action="{{ route('user.store') }}" method="POST" role="form" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label for="">Full Name</label>
                     <input type="text" class="form-control" value="{{ old('fullName') }}" name="fullName"
@@ -22,20 +22,21 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" value="{{ old('password') }}" name="password"
+                        placeholder="Input password">
+                    @error('password')
+                        <small class="badge badge-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
                     <label for="">Phone</label>
                     <input type="number" class="form-control" value="{{ old('phoneNumber') }}" name="phoneNumber"
                         placeholder="Input phoneNumber">
                     @error('phoneNumber')
-                        <small class="badge badge-danger">{{ $message }}</small>
-                    @enderror
-                </div>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <label for="">Password</label>
-                    <input type="text" class="form-control" value="{{ old('password') }}" name="password"
-                        placeholder="Input password">
-                    @error('password')
                         <small class="badge badge-danger">{{ $message }}</small>
                     @enderror
                 </div>
@@ -47,9 +48,7 @@
                         <small class="badge badge-danger">{{ $message }}</small>
                     @enderror
                 </div>
-            </div>
-            <div class="col-md-2">    
-                <div class="form-gourp">
+                {{-- <div class="form-gourp">
                     <label for="">Role</label>
                     <div class="radio">
                         <label>
@@ -61,7 +60,7 @@
                             User
                         </label>
                     </div>
-                </div>
+                </div> --}}
                 <div class="form-gourp">
                     <label for="">Status</label>
                     <div class="radio">

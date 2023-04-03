@@ -29,10 +29,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->group(function(){
     Route::get('/',[AdminController::class,'dashboard'])->name('dashboard')->middleware('checkadmin::class');
     Route::resources([
-        'province'      =>   ProvinceController::class,
-        'branch'        =>   BranchController::class,
+        // 'province'      =>   ProvinceController::class,
+        // 'branch'        =>   BranchController::class,
         'room'          =>   RoomController::class,
-        'service'       =>   ServiceController::class,
+        // 'service'       =>   ServiceController::class,
         'user'          =>   UserController::class,
     ]);
 });

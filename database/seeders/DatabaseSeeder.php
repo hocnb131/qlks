@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             // ProvinceSeeder::class,
             // BranchSeeder::class,
             RoomSeeder::class,
-            ServiceSeeder::class
+            UserSeeder::class,
+            // ServiceSeeder::class
         ]);
 
     }

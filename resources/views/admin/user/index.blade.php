@@ -6,8 +6,8 @@
     
     <div class="col-auto">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search By Name..." name="key">
-            <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+            <input type="text" class="form-control" placeholder="Search By Name..." value="{{$key}}" name="key">
+            <button id="submit-key" class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
           </div>
     </div>
     <div class="col"></div>
@@ -23,6 +23,7 @@
             <th>ID</th>
             <th>Full Name</th>
             <th>Email</th>
+            <th>Address</th>
             <th>Phone</th>
             <!-- <th>Password</th> -->
             <th>Role</th>
@@ -46,8 +47,9 @@
                     </div>
                 </td> --}}
             <td>{{$d->id}}</td>
-            <td>{{$d->fullName}}</td>
+            <td>{{$d->name}}</td>
             <td>{{$d->email}}</td>
+            <td>{{$d->address}}</td>
             <td>{{$d->phoneNumber}}</td>
             <!-- <td style="max-width: 5cm;">{{$d->password}}</td> -->
             <td>
@@ -75,7 +77,7 @@
                 </a> 
             </td>
             <td>{{\Carbon\Carbon::create($d->created_at)->format('d-m-Y')}}</td>
-            <td>{{\Carbon\Carbon::parse($d->updated_at)->diffForHumans()}}</td>
+            <td>{{\Carbon\Carbon::parse($d->updated_at)->locale('vi')->diffForHumans()}}</td>
             </td>
             {{-- <td>
                 <a href="{{ route('phanquyen',$d->id) }}" class="btn btn-sm btn-success">
@@ -105,45 +107,21 @@
 <div class="">
     {{$data->appends(request()->all())->links()}}
 </div>
+<form action="" method="POST" id="form-delete">
+    @csrf @method('DELETE')
+</form>
+<form action="" method="GET" id="form-add">
+    @csrf
+</form>
 <script>
-    $('.btndelete').click(function(ev) {
-        ev.preventDefault();
-        var _href = $(this).attr('href');
-        $('form#form-delete').attr('action', _href);
-        if (confirm('Bạn có chắc chắn muốn xóa nó không?')) {
-            $('form#form-delete').submit();
-        }
-    })
-    $('.btnselectall').click(function(ev) {
-        ev.preventDefault();
-        var _name = $('form-check-input').attr('name');
-        $('.btnselectall').submit();
-        alert(_name);
-        console.log(_name);
-    })
-    $('.btnAdd').click(function(ev) {
+$('.btndelete').click(function(ev) {
     ev.preventDefault();
     var _href = $(this).attr('href');
     // alert(_href);
-    $('form#form-add').attr('action', _href);
-    $('form#form-add').submit();
+    $('form#form-delete').attr('action', _href);
+    if (confirm('Bạn có chắc chắn muốn xóa nó không?')) {
+        $('form#form-delete').submit();
+    }
 })
-    </script>
-    
-    @stop();
-
-{{-- @section('js')
-
-<script>
-    $('.btndelete').click(function (ev) {
-        ev.preventDefault();
-        var _href = $(this).attr('href');
-        // alert(_href);
-        $('form#form-delete').attr('action',_href);
-        if(confirm('Bạn có chắc chắn muốn xóa nó không?')){
-            $('form#form-delete').submit();
-        }
-  })
 </script>
-
-@stop(); --}}
+@stop();
