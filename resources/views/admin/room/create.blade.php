@@ -9,7 +9,7 @@
                 {{-- name --}}
                 <div class="form-group">
                     <label for="">Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Nhập tên phòng" required>
+                    <input type="text" class="form-control" name="name" placeholder="Nhập tên phòng" required pattern="[a-zA-Z0-9]{5,20}+" title="Vui lòng không để trống tên khu vực">
                     @error('name')
                         <small class="badge badge-danger">{{ $message }}</small>
                     @enderror

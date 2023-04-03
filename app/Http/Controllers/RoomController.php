@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use App\Models\Branch;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\RoomRequest;
+use App\Http\Requests\RoomUpdateRequest;
 class RoomController extends Controller
 {
     /**
@@ -34,7 +35,7 @@ class RoomController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RoomRequest $request)
     {
         if($request->has('file_upload')){
             $file = $request->file_upload;
@@ -79,7 +80,7 @@ class RoomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Room $room)
+    public function update(RoomUpdateRequest $request, Room $room)
     {
         if($request->has('file_upload')){
             $file = $request->file_upload;

@@ -11,7 +11,7 @@ class RoomRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,17 +22,26 @@ class RoomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|unique:province|alpha|min:5|max:20',
+            'name'=>'required|unique:room|min:5|max:20',
+            'price'=>'required',
+            'size'=>'required',
+            'capacity'=>'required',
+            'bed'=>'required',
+            'services'=>'required',
         ];
     }
     public function messages()
     {
         return [
             'name.required'=>'Vui lòng không để trống tên khu vực',
-            'name.unique'=>'Khu vực bạn nhập đã tồn tại',
-            'name.alpha'=>'Vui lòng đặt tên chữ không đặt số',
+            'name.unique'=>'Phòng bạn nhập đã tồn tại',
             'name.min'=>'Vui lòng đặt tên từ 5 đến 20 ký tự',
             'name.max'=>'Vui lòng đặt tên từ 5 đến 20 ký tự',
+            'price.required'=>'Vui lòng không để trống giá',
+            'size.required'=>'Vui lòng không để trống diện tích phòng',
+            'capacity.required'=>'Vui lòng không để trống giới hạn người',
+            'bed.required'=>'Vui lòng không để trống loại giường',
+            'services.required'=>'Vui lòng không để trống dịch vụ',
         ];
     }
 }

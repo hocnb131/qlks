@@ -15,13 +15,14 @@ class CheckAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {   
-        // if (Auth::check()&&Auth::user()->role == 1) {
-            // if (Auth::user()->role == 1) {
-            return $next($request);
-        //     return redirect()->route('dashboard');
-        // } else {
-            // return redirect()->route('home');
-        // }
+    {
+        if (Auth::check() && Auth::user()->role == 1) {
+            if (Auth::user()->role == 1) {
+                return $next($request);
+                return redirect()->route('dashboard');
+            } else {
+                return redirect()->route('home');
+            }
+        }
     }
 }
