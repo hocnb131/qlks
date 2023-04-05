@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\RoomRequest;
-use App\Http\Requests\RoomUpdateRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 class UserController extends Controller
 {
     /**
@@ -34,7 +33,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         // if($request->has('file_upload')){
         //     $file = $request->file_upload;
@@ -77,7 +76,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
         // if($request->has('file_upload')){
         //     $file = $request->file_upload;

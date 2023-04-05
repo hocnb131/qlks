@@ -19,12 +19,16 @@ use App\Http\Controllers\UserController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('trangchu');
 });
 Auth::routes();
-
+// Route::get('/trangchu', [HomeController::class, 'trangchu'])->name('trangchu');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 Route::prefix('admin')->group(function(){
     Route::get('/',[AdminController::class,'dashboard'])->name('dashboard')->middleware('checkadmin::class');

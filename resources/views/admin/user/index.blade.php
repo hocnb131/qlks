@@ -59,14 +59,13 @@
                 <span class="badge badge-success">Admin</span>
                 @endif
             </td>
-            <td>
-                @if($d->status == 0)
+            {{-- <td>
+                @if(Auth::check())
                 <span class="badge badge-success">On</span>
                 @else
-
                 <span class="badge badge-danger">Off</span>
                 @endif
-            </td>
+            </td> --}}
             <td>          
         
                 <a href="{{ route('user.edit',$d->id) }}" class="btn btn-sm btn-success">

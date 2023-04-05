@@ -14,10 +14,10 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $data = Room::orderBy('id','desc')->paginate(5);
+        $data = Room::orderBy('id','asc')->paginate(5);
         $key=request()->key;
         if($key = request()->key){
-        $data = Room::orderBy('id','desc')->where('name','like','%'.$key.'%')->paginate(10);
+        $data = Room::orderBy('id','asc')->where('name','like','%'.$key.'%')->paginate(10);
         }
         return view('admin.room.index',['data'=>$data,'key'=>$key]);
     }

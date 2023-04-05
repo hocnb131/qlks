@@ -18,7 +18,8 @@ class UserSeeder extends Seeder
             'address'=>'123 nhà bè',
             'phoneNumber'=>'0123456789',
             'password'=>bcrypt('123123123'),
-            'role'=>'1'
+            'role'=>'1',
+            // 'status'=>'1'
         ]);
     }
 }

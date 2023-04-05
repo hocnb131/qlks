@@ -7,9 +7,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="">Full Name</label>
-                    <input type="text" class="form-control" value="{{ old('fullName') }}" name="fullName"
+                    <input type="text" class="form-control" value="{{ old('name') }}" name="name"
                         placeholder="Input fullName">
-                    @error('fullName')
+                    @error('name')
                         <small class="badge badge-danger">{{ $message }}</small>
                     @enderror
                 </div>
@@ -61,7 +61,7 @@
                         </label>
                     </div>
                 </div> --}}
-                <div class="form-gourp">
+                {{-- <div class="form-gourp">
                     <label for="">Status</label>
                     <div class="radio">
                         <label>
@@ -73,7 +73,7 @@
                             Off
                         </label>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <button type="submit" class="btn btn-primary">Save Data</button>
         </div>
