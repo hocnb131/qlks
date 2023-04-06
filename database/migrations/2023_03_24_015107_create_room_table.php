@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('size');
             $table->string('capacity');
             $table->string('bed');
-            $table->longText('services');
+            $table->longText('services')->nullable();
             // $table->date('calendar');
             // $table->longText('thumbnailDescription')->nullable();
             // $table->string('bedType');

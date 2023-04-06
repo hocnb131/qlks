@@ -65,7 +65,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        return View('room',['room'=>$room]);
     }
 
     /**

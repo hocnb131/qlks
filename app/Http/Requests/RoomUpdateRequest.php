@@ -27,7 +27,7 @@ class RoomUpdateRequest extends FormRequest
             'size'=>'required',
             'capacity'=>'required',
             'bed'=>'required',
-            'services'=>'required',
+            // 'services'=>'required',
         ];
     }
     public function messages()
@@ -41,7 +41,7 @@ class RoomUpdateRequest extends FormRequest
             'size.required'=>'Vui lòng không để trống giá',
             'capacity.required'=>'Vui lòng không để trống giá',
             'bed.required'=>'Vui lòng không để trống giá',
-            'services.required'=>'Vui lòng không để trống giá',
+            // 'services.required'=>'Vui lòng không để trống giá',
         ];
     }
 }

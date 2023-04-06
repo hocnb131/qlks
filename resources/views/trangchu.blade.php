@@ -159,7 +159,39 @@
         <div class="container-fluid">
             <div class="hp-room-items">
                 <div class="row">
+                    
+                    @foreach ($room as $r)
                     <div class="col-lg-3 col-md-6">
+                        <div class="hp-room-item set-bg" data-setbg="{{ url('/uploads') }}/{{ $r->thumbnail }}">
+                            <div class="hr-text">
+                                <h3>{{$r->name}}</h3>
+                                <h2>{{number_format($r->price)}}$<span>/Pernight</span></h2>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="r-o">Diện tích:</td>
+                                            <td>{{$r->size}} m</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="r-o">Giới hạn người:</td>
+                                            <td>{{$r->capacity}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="r-o">Loại giường:</td>
+                                            <td>{{$r->bed}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="r-o">Dịch vụ:</td>
+                                            <td>{!!nl2br($r->services)!!}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a href="#" class="primary-btn">More Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    {{-- <div class="col-lg-3 col-md-6">
                         <div class="hp-room-item set-bg" data-setbg="{{url('sona')}}/img/room/room-b1.jpg">
                             <div class="hr-text">
                                 <h3>Double Room</h3>
@@ -274,7 +306,7 @@
                                 <a href="#" class="primary-btn">More Details</a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

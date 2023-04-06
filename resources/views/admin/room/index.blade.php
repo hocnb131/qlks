@@ -27,20 +27,21 @@
                 <th>Capacity</th>
                 <th>Bed Type</th>
                 <th>Services</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $d)
                 <tr>
-                    <td>{{ $d->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $d->name }}</td>
                     <td><img src="{{ url('/uploads') }}/{{ $d->thumbnail }}" width="50" alt=""></td>
                     <td>{{number_format($d->price)}}</td>
                     <td>{{ $d->size }}</td>
                     <td>{{ $d->capacity }}</td>
                     <td>{{ $d->bed }}</td>
-                    <td>{!! nl2br($d->services) !!}</td>
+                    <td style="width:100px">{!! nl2br($d->services) !!}</td>
                     <td>
                         @if ($d->status == 0)
                             <span class="badge badge-danger">Private</span>

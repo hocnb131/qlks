@@ -11,18 +11,13 @@ class Room extends Model
     protected $table = 'room';
     protected $fillable = [
     'name',
-    'adults',
-    'children',
-    'description',
-    'calendar',
     'thumbnail',
     'thumbnailDescription',
     'price',
-    'bedType',
-    'area',
+    'bed',
+    'size',
+    'capacity',
+    'services',
     'status',
-    'roomType',
-    'amount',
-    'branch_id'
     ];
 }

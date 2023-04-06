@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,10 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('trangchu');
+        $room = Room::whereIn('id',[1,2,3,4,5,6,7])->get();
+        return view('trangchu',['room'=>$room]);
     }
-    public function trangchu()
-    {
-        return view('trangchu');
+    public function room()
+    { 
+        $room = Room::paginate(4);
+        return view('room',['room'=>$room]);
     }
 }
