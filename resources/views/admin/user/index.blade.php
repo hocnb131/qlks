@@ -47,7 +47,7 @@
                     </div>
                 </td> --}}
             <td>{{$d->id}}</td>
-            <td>{{$d->name}}</td>
+            <td>{{$d->fullname}}</td>
             <td>{{$d->email}}</td>
             <td>{{$d->address}}</td>
             <td>{{$d->phoneNumber}}</td>

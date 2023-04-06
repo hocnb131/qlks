@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'email'=>'hocnb@gmail.com',
             'address'=>'123 nhà bè',
             'phoneNumber'=>'0123456789',
-            'password'=>bcrypt('123123123'),
+            'password'=> bcrypt('123123123'),
             'role'=>'1',
             // 'status'=>'1'
         ]);

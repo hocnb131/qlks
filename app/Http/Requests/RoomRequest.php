@@ -27,13 +27,13 @@ class RoomRequest extends FormRequest
             'size'=>'required',
             'capacity'=>'required',
             'bed'=>'required',
-            'services'=>'required',
+            // 'services'=>'required',
         ];
     }
     public function messages()
     {
         return [
-            'name.required'=>'Vui lòng không để trống tên khu vực',
+            'name.required'=>'Vui lòng không để trống tên phòng',
             'name.unique'=>'Phòng bạn nhập đã tồn tại',
             'name.min'=>'Vui lòng đặt tên từ 5 đến 20 ký tự',
             'name.max'=>'Vui lòng đặt tên từ 5 đến 20 ký tự',
@@ -41,7 +41,7 @@ class RoomRequest extends FormRequest
             'size.required'=>'Vui lòng không để trống diện tích phòng',
             'capacity.required'=>'Vui lòng không để trống giới hạn người',
             'bed.required'=>'Vui lòng không để trống loại giường',
-            'services.required'=>'Vui lòng không để trống dịch vụ',
+            // 'services.required'=>'Vui lòng không để trống dịch vụ',
         ];
     }
 }

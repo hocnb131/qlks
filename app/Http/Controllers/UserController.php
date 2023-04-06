@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -50,9 +51,10 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->address = $request->address;
         $user->phoneNumber = $request->phoneNumber;
-        $user->password = bcrypt($request->password);
-        $user->status = $request->status;
+        $user->password = Hash::make($request['password']);;
+        // $user->status = $request->status;
         $user->save();
+        // dd($user);
         return redirect()->route('user.index')
         ->with('success','Tạo thành công');
     }
@@ -70,6 +72,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        // dd($user);
         return view('admin.user.edit',['user'=>$user]);
     }
 
@@ -87,9 +90,10 @@ class UserController extends Controller
         //     $file_name = $user->thumbnail;
         // }
         // $request->merge(['thumbnail'=> $file_name]);
+        // dd($user);
         $data = $request->except(['_token','_method']);
         $user->update($data);
-
+        
         return redirect()->route('user.index')
         ->with('success','Cập nhật thành công');
     }

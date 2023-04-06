@@ -22,7 +22,7 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required|min:8|max:20',
+            'name'=>'required',
             'email'=>'required',
             'address'=>'required|max:50',
             'phoneNumber'=>'required|min:10|max:12',
@@ -33,10 +33,10 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name.required'=>'Vui lòng không để trống tên',
-            'name.min'=>'Vui lòng đặt tên từ 8 đến 20 ký tự',
-            'name.max'=>'Vui lòng đặt tên từ 8 đến 20 ký tự',
+            // 'name.min'=>'Vui lòng đặt tên từ 8 đến 20 ký tự',
+            // 'name.max'=>'Vui lòng đặt tên từ 8 đến 20 ký tự',
             'email.required'=>'Vui lòng không để trống email',
-            'address.required'=>'Vui lòng không để trống diện tích phòng',
+            'address.required'=>'Vui lòng không để trống địa chỉ',
             'address.max'=>'Vui lòng nhập địa chỉ nhỏ hơn 50 ký tự',
             'phoneNumber.required'=>'Vui lòng không để trống số điện thoại',
             'phoneNumber.min'=>'Vui lòng nhập số điện thoại từ 10 đến 12 số',
