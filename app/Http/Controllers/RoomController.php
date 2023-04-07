@@ -48,6 +48,7 @@ class RoomController extends Controller
         $request->merge(['thumbnail'=> $file_name]);
         $room = new Room;
         $room->name = $request->name;
+        $room->description = $request->description;
         $room->price = $request->price;
         $room->thumbnail = $request->thumbnail;
         $room->size = $request->size;
@@ -74,6 +75,7 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         // $room = Branch::with('branchs')->get();
+        // dd($room);
         return view('admin.room.edit',['room'=>$room]);
     }
 
@@ -91,7 +93,11 @@ class RoomController extends Controller
             $file_name = $room->thumbnail;
         }
         $request->merge(['thumbnail'=> $file_name]);
+    
         $data = $request->except(['_token','_method']);
+        // dd($request->description);
+        // dd($room->description);
+        // dd($request->all());
         $room->update($data);
 
         return redirect()->route('room.index')

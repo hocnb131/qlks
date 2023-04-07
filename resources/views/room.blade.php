@@ -49,7 +49,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="#" class="primary-btn">More Details</a>
+                        <a href="{{route('roomdetail',$r->id)}}" class="primary-btn">More Details</a>
                     </div>
                 </div>
             </div>

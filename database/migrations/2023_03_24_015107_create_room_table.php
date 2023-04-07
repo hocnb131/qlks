@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->double('price');
             $table->longText('thumbnail')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('thumbnaildescription')->nullable();
             $table->string('size');
             $table->string('capacity');
             $table->string('bed');

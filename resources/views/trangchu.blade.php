@@ -182,11 +182,11 @@
                                         </tr>
                                         <tr>
                                             <td class="r-o">Dịch vụ:</td>
-                                            <td>{!!nl2br($r->services)!!}</td>
+                                            <td>{{$r->services}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <a href="#" class="primary-btn">More Details</a>
+                                <a href="{{route('roomdetail',$r->id)}}" class="primary-btn">More Details</a>
                             </div>
                         </div>
                     </div>

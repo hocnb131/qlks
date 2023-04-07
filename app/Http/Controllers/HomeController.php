@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Room;
+// use App\Models\RoomDetail;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -30,5 +31,10 @@ class HomeController extends Controller
     { 
         $room = Room::paginate(4);
         return view('room',['room'=>$room]);
+    }
+    public function roomdetail($id){
+        $roomdetail = Room::where('id',$id)->first();
+        // dd($roomdetail);
+        return view('roomdetail',['roomdetail'=>$roomdetail]);
     }
 }

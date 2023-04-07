@@ -57,8 +57,15 @@
         {{-- Services --}}
         <div class="form-group">
             <label for="">Services</label>
-            <textarea name="services" value="{!!nl2br($room->services)!!}" class="form-control" id="summernote" placeholder="Mô tả dịch vụ"></textarea>
+        <input name="services" value="{{$room->services}}" class="form-control" placeholder="Mô tả dịch vụ">
             @error('services')
+                <small class="badge badge-danger">{{ $message }}</small>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="">Description</label>
+            <textarea name="description" value="{{$room->description}}" class="form-control" id="summernote" placeholder="Mô tả phòng"></textarea>
+            @error('description')
                 <small class="badge badge-danger">{{ $message }}</small>
             @enderror
         </div>

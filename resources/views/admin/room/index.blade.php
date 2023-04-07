@@ -27,6 +27,7 @@
                 <th>Capacity</th>
                 <th>Bed Type</th>
                 <th>Services</th>
+                <th>Description</th>
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -41,7 +42,8 @@
                     <td>{{ $d->size }}</td>
                     <td>{{ $d->capacity }}</td>
                     <td>{{ $d->bed }}</td>
-                    <td style="width:100px">{!! nl2br($d->services) !!}</td>
+                    <td style="width:100px">{{$d->services}}</td>
+                    <td style="width:100px">{!!nl2br($d->description)!!}</td>
                     <td>
                         @if ($d->status == 0)
                             <span class="badge badge-danger">Private</span>
@@ -51,18 +53,18 @@
                     </td>
                     <!-- <td>{{ $d->thumbnail }}</td> -->
                     <td>
-                        <form action="{{ route('room.destroy', $d->id) }}" method="POST" id="form-delete">
-                            @csrf
+                       
+                            
 
                             <a href="{{ route('room.edit', $d->id) }}" class="btn btn-sm btn-success">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            @method('DELETE')
-                            <button onclick="return confirm('Bạn có chắc muốn xóa không? ')"
+                           
+                            <a onclick="return confirm('Bạn có chắc muốn xóa không? ')"
                                 href="{{ route('room.destroy', $d->id) }}" class="btn btn-sm btn-danger btndelete">
                                 <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
+                        </a>
+                        
                     </td>
                     <!-- <td><img src="{{ url('/uploads') }}/{{ $d->thumbnail }}" width="50" alt=""></td> -->
                 </tr>

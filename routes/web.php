@@ -8,6 +8,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UserController;
+use App\Mail\GuiEmail;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,16 +22,25 @@ use App\Http\Controllers\UserController;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('trangchu');
 // });
 // Route::get('/', function () {
 //     return view('trangchu');
 // });
+
+// Route::get("/guimail", function(){
+//    Mail::mailer('mailgun')
+// //    ->to('diachimail@ngườinhận.com')
+//    ->to('hocnb131@gmail.com')
+//    ->send( new GuiEmail() );
+// });
 Auth::routes();
 
-Route::prefix('home')->group(function(){
+Route::prefix('/')->group(function(){
     Route::get('/',[HomeController::class,'index'])->name('home');
+    Route::get('/home',[HomeController::class,'index'])->name('home');
     Route::get('/room', [HomeController::class, 'room'])->name('room');
+    Route::get('/room/{id?}', [HomeController::class, 'roomdetail'])->name('roomdetail');
 
 });
 
