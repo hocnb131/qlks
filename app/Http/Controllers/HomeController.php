@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $room = Room::whereIn('id',[1,2,3,4,5,6,7])->get();
+        // $room = Room::whereIn('id',[1,2,3,4,5,6,7])->get();
+        $room = Room::whereIn('id',[1,2,3,4,5])->get();
         return view('trangchu',['room'=>$room]);
     }
     public function room()

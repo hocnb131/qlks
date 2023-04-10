@@ -57,7 +57,7 @@ class GuiEmail extends Mailable
     {
         $this->subject('Xác nhận đăng ký thành công')
                     ->view('emails.bookingMail')
-                    ->from('harmony@gmail.com','Harmony Hotel');
+                    ->from('hocnb131@gmail.com','Sona Hotel');
         return $this;
     }
 

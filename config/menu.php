@@ -54,6 +54,22 @@
                 ],
             ]
         ],
+        // Service
+        [
+            'label' => 'RoomDetail',
+            'route' => 'roomdetail.index',
+            'icon' => 'fa-bath',
+            'item' => [
+                [
+                'label' => 'All Roomdetail', 
+                'route' => 'roomdetail.index', 
+                ],
+                [
+                'label' => 'Add Roomdetail', 
+                'route' => 'roomdetail.create', 
+                ],
+            ]
+        ],
         // // Service
         // [
         //     'label' => 'Service',

@@ -161,7 +161,7 @@
                 <div class="row">
                     
                     @foreach ($room as $r)
-                    <div class="col-lg-3 col-md-6">
+                        <div class="col-lg-3 col-md-6">
                         <div class="hp-room-item set-bg" data-setbg="{{ url('/uploads') }}/{{ $r->thumbnail }}">
                             <div class="hr-text">
                                 <h3>{{$r->name}}</h3>
@@ -191,6 +191,12 @@
                         </div>
                     </div>
                     @endforeach
+                    
+
+
+                    
+                    
+                    
                     {{-- <div class="col-lg-3 col-md-6">
                         <div class="hp-room-item set-bg" data-setbg="{{url('sona')}}/img/room/room-b1.jpg">
                             <div class="hr-text">

@@ -27,7 +27,7 @@
                 <th>Capacity</th>
                 <th>Bed Type</th>
                 <th>Services</th>
-                <th>Description</th>
+                {{-- <th>Description</th> --}}
                 <th>Status</th>
                 <th>Action</th>
             </tr>
@@ -43,7 +43,7 @@
                     <td>{{ $d->capacity }}</td>
                     <td>{{ $d->bed }}</td>
                     <td style="width:100px">{{$d->services}}</td>
-                    <td style="width:100px">{!!nl2br($d->description)!!}</td>
+                    {{-- <td style="width:100px">{!!nl2br($d->description)!!}</td> --}}
                     <td>
                         @if ($d->status == 0)
                             <span class="badge badge-danger">Private</span>
