@@ -44,7 +44,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p {!!nl2br($roomdetail->description)!!}
+                        <p> {!!nl2br($roomdetail->description)!!}
                         </p>
                     </div>
                 </div>
