@@ -29,12 +29,12 @@ use Illuminate\Support\Facades\Mail;
 //     return view('trangchu');
 // });
 
-Route::get("/guimail", function(){
-   Mail::mailer('mailgun')
-//    ->to('diachimail@ngườinhận.com')
-   ->to('hocnb131@gmail.com')
-   ->send( new GuiEmail() );
-});
+// Route::get("/guimail", function(){
+//    Mail::mailer('mailgun')
+// //    ->to('diachimail@ngườinhận.com')
+//    ->to('hocnb131@gmail.com')
+//    ->send( new GuiEmail() );
+// });
 Auth::routes();
 
 Route::prefix('/')->group(function(){

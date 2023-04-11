@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Room;
+use App\Models\RoomDetail;
 // use App\Models\RoomDetail;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         // $room = Room::whereIn('id',[1,2,3,4,5,6,7])->get();
+        // $r = Room::with('roomdetail')->get();
+        // $r = Room::with('roomdetail')->find(2);
+        // $r = RoomDetail::find(1)->room;
+        // dd($r);
         $room = Room::whereIn('id',[1,2,3,4,5])->get();
         return view('trangchu',['room'=>$room]);
     }
@@ -35,7 +40,14 @@ class HomeController extends Controller
     }
     public function roomdetail($id){
         $roomdetail = Room::where('id',$id)->first();
-        // dd($roomdetail);
-        return view('roomdetail',['roomdetail'=>$roomdetail]);
+        // $room = RoomDetail::with('room')->first()->room; 
+        $room = RoomDetail::all(); 
+        // foreach ($room as $index => $r) {
+        //     dd($r->room->name);
+        // }
+        // dd($r);
+
+        return view('roomdetail',['roomdetail'=>$roomdetail,'room'=>$room]);
     }
+    
 }

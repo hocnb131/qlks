@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{ url('adlte') }}/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ url('adlte') }}/plugins/summernote/summernote-bs4.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     @stack('scripts')
     @stack('styles')
 </head>

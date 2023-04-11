@@ -19,10 +19,12 @@ class RoomDetail extends Model
     'size',
     'capacity',
     'services',
+    'ngaydat',
+    'ngaytra',
     'room_id'
-
     ];
     public function room(): BelongsTo{
-        return $this->belongsTo(Room::class,'room_id');
+        // return $this->belongsTo(Room::class,'room_id');
+        return $this->belongsTo(Room::class);
     }
 }

@@ -23,6 +23,6 @@ class Room extends Model
     ];
     public function roomdetail(): HasOne
     {
-        return $this->hasOne(RoomDetail::class,);
+        return $this->hasOne(RoomDetail::class);
     }
 }

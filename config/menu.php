@@ -54,7 +54,7 @@
                 ],
             ]
         ],
-        // Service
+        // RoomDetail
         [
             'label' => 'RoomDetail',
             'route' => 'roomdetail.index',
