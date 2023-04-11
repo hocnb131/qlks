@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\RoomDetail;
 use App\Models\Room;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class RoomDetailController extends Controller
 {
     /**
@@ -13,9 +13,12 @@ class RoomDetailController extends Controller
      */
     public function index()
     {
+        
         $data = RoomDetail::with('room')->get();
+        $ngay = $data->ngaydat;
         // dd($data);
         return view('admin.roomdetail.index',['data'=>$data]);
+        
         // return view('admin.room.index',['data'=>$data,'key'=>$key]);
     }
 
@@ -26,6 +29,7 @@ class RoomDetailController extends Controller
     {
         // $data = RoomDetail::orderBy('name','asc')->select('id','name')->get();
         $room = Room::get();
+        
         
         return view('admin.roomdetail.create',['room'=>$room]);
     }

@@ -5,7 +5,7 @@ use App\Models\Room;
 use App\Models\RoomDetail;
 // use App\Models\RoomDetail;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class HomeController extends Controller
 {
     /**
@@ -40,14 +40,28 @@ class HomeController extends Controller
     }
     public function roomdetail($id){
         $roomdetail = Room::where('id',$id)->first();
-        // $room = RoomDetail::with('room')->first()->room; 
+        // $ngaydat = Room::with('roomdetail')->first()->roomdetail;
+        // $ngaydat = Room::with('roomdetail')->first()->roomdetail->ngaydat;
+        $ngaydat = RoomDetail::where('room_id',$id)->first()->ngaydat;
+        $ngaytra = RoomDetail::where('room_id',$id)->first()->ngaytra;
+        $ngaydat1= Carbon::parse($ngaydat);
+        // $ngaytra = Room::with('roomdetail')->first()->roomdetail->ngaytra;
+        $ngaytra1= Carbon::parse($ngaytra);
+        $ngay = $ngaytra1->diffInDays($ngaydat1);
+        // $price = RoomDetail::with('room')->first()->room->price;
+        $price = Room::where('id',$id)->first()->price;
+
+        
+        $tong = $ngay * $price;
+        dd($tong);
+        $room = RoomDetail::with('room')->first()->room; 
         $room = RoomDetail::all(); 
         // foreach ($room as $index => $r) {
         //     dd($r->room->name);
         // }
         // dd($r);
 
-        return view('roomdetail',['roomdetail'=>$roomdetail,'room'=>$room]);
+        return view('roomdetail',['roomdetail'=>$roomdetail,'room'=>$room,'tong'=>$tong]);
     }
     
 }

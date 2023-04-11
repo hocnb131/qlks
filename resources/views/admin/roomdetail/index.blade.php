@@ -31,8 +31,8 @@
                 {{-- <th>Description</th> --}}
                 <th>Ngày đặt</th>
                 <th>Ngày trả</th>
+                <th>Giá</th>
                 <th>Status</th>
-
                 <th>Action</th>
                 
             </tr>
@@ -56,6 +56,7 @@
                     {{-- <td>{{$d->ngaytao}}</td> --}}
                     <td>{{\Carbon\Carbon::parse($d->ngaydat)->Format('d-m-Y')}}</td>
                     <td>{{\Carbon\Carbon::parse($d->ngaytra)->Format('d-m-Y')}}</td>
+                    {{-- <td>{{$tong}}</td> --}}
                     <td>
                         @if ($d->status == 0)
                             <span class="badge badge-danger">Private</span>

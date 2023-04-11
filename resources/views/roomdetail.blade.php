@@ -247,13 +247,13 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="check-date">
-                                <label for="date-in">Tên khách hàng</label>
-                                <input type="text" class="text-input" class="name" id="date-in">
+                                <label for="name">Tên khách hàng</label>
+                                <input type="text" class="text-input" class="name" id="name">
                                 {{-- <i class="icon_calendar"></i> --}}
                             </div>
                             <div class="check-date">
-                                <label for="date-in">Số điện thoại</label>
-                                <input type="text" class="text-input" class="phoneNumber" id="date-in">
+                                <label for="phone">Số điện thoại</label>
+                                <input type="text" class="text-input" class="phoneNumber" id="phone">
                                 {{-- <i class="icon_calendar"></i> --}}
                             </div>
                             <div class="check-date">
@@ -281,8 +281,14 @@
                                         <option value="{{ $r->id }}">{{ $r->room->name }}</option>
                                     @endforeach
                                 </select>
+                            </div><div class="check-date">
+                                <label for="">Giá</label>
+                                    {{-- @foreach ($room as $index => $r) --}}
+                                <input type="text" value="{{$tong}}$" class="text-input" class="price" id="date-out">
+                                {{-- <i class="icon_calendar"></i> --}}
+                                {{-- @endforeach --}}
                             </div>
-                            <button type="submit">Check Availability</button>
+                            <button type="submit">Đặt phòng</button>
                         </form>
                     </div>
                 </div>
